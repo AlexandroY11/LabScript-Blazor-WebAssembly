@@ -1,6 +1,7 @@
 ﻿@page "/"
 
 @inject IJSRuntime ijsruntime;
+@inject IAlertService alertService;
 
 <PageTitle>Home</PageTitle>
 
@@ -11,7 +12,6 @@ Welcome to your new app.
 <script>
 	function jsFuncion(){
 	alert("Hola Mundo")
-
 	}
 </script>
 
@@ -20,7 +20,8 @@ Welcome to your new app.
 
 	protected override async Task OnAfterRenderAsync(bool firstRender){
 		if(firstRender){
-			await ijsruntime.InvokeVoidAsync("jsFuncion", null);
+			// await ijsruntime.InvokeVoidAsync("alert", "Prueba");
+			await alertService.CallJsAlertFunction();
 		}
 	}
 }
